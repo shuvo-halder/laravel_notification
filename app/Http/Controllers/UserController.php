@@ -57,4 +57,11 @@ class UserController extends Controller
         return response()->json(['message' => 'Follow successfully!']);
 
     }
+
+    public function markAsRead($id){
+        if($id){
+            auth()->user()->unreadNotifications->where('id', $id)->markAsRead();
+        }
+        return redirect()->back();
+    }
 }

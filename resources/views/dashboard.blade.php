@@ -11,9 +11,10 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
 
-                    @foreach (auth()->user()->notifications as $notification)
+                    @foreach (auth()->user()->unreadnotifications as $notification)
                         <div class="bg-blue-300 p-3">
                             {{ $notification->data['user_name'] }} started following you
+                            <a href="{{ route('markasread',['id'=>$notification->id]) }}" class="p-2 bg-red-400 text-white rounded-lg">Mark as read</a>
                         </div>
                     @endforeach
                     
