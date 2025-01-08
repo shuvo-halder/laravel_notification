@@ -16,3 +16,4 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [UserController::class, 'index']);
 Route::get('user-notifications', [UserController::class, 'userNotifications'])->name('user.notifications');
+Route::get('post-notifications', [UserController::class, 'postNotifications'])->name('post.notifications');
