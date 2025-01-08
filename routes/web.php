@@ -32,5 +32,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/user-notifications', [UserController::class, 'userNotifications']);
 Route::get('/post-notifications', [UserController::class, 'postNotifications']);
+Route::get('/user-follow-notification', [UserController::class, 'UserFollowNotification']);
 
 require __DIR__.'/auth.php';

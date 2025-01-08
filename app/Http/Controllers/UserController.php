@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Notifications\WelcomeNotification;
 use App\Notifications\PostAlartNotification;
+use App\Notifications\UserFollowNotification;
 use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
@@ -39,5 +40,18 @@ class UserController extends Controller
         $user->notify(new PostAlartNotification($post));
 
         return response()->json(['message' => 'Notification sent!']);
+    }
+
+    public function UserFollowNotification(Request $request){
+        $user = User::first();
+
+        if(auth()->user()){
+
+            auth()->user()->notify(new UserFollowNotification($user));
+
+        }
+
+        return response()->json(['message' => 'Follow successfully!']);
+
     }
 }

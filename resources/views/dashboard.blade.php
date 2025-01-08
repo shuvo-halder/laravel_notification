@@ -10,6 +10,13 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
+
+                    @foreach (auth()->user()->notifications as $notification)
+                        <div class="bg-blue-300 p-3">
+                            {{ $notification->data['user_name'] }} started following you
+                        </div>
+                    @endforeach
+                    
                 </div>
             </div>
         </div>
