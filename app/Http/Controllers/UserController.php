@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Notifications\WelcomeNotification;
+use App\Notifications\PostAlartNotification;
 use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
@@ -30,9 +31,9 @@ class UserController extends Controller
         ];
         
         foreach ($users as $user){
-            Notification::send($user, new WelcomeNotification($post));
+            Notification::send($user, new PostAlartNotification($post));
         }
-        
+
         return response()->json(['message' => 'Notification sent!']);
     }
 }

@@ -7,16 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class PostAlartNotification extends Notification
+class PostAlartNotification extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    public $post;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($post)
     {
-        //
+        $this->post = $post;
     }
 
     /**
@@ -35,8 +37,8 @@ class PostAlartNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line($this->post['title'])
+                    ->action('Notification Action', url('/').'/post/'.$this->post['slug'])
                     ->line('Thank you for using our application!');
     }
 
