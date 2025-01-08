@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +14,5 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('user-notifications', [HomeController::class, 'userNotifications'])->name('user.notifications');
+Route::get('/', [UserController::class, 'index']);
+Route::get('user-notifications', [UserController::class, 'userNotifications'])->name('user.notifications');
