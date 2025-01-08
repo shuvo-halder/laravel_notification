@@ -42,8 +42,11 @@ class UserController extends Controller
         return response()->json(['message' => 'Notification sent!']);
     }
 
-    public function UserFollowNotification(Request $request){
-        $user = User::first();
+    public function UserFollowNotification(Request $request, $user_id){
+        $user = User::where('id', $user_id)->first();
+        if(!$user){
+            return response()->json(['message' => 'User not found! or you are not select any user'], 404);
+        }
 
         if(auth()->user()){
 
