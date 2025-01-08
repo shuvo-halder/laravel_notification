@@ -34,6 +34,10 @@ class UserController extends Controller
             Notification::send($user, new PostAlartNotification($post));
         }
 
+        $singleUser = User::first();
+
+        $user->notify(new PostAlartNotification($post));
+
         return response()->json(['message' => 'Notification sent!']);
     }
 }
