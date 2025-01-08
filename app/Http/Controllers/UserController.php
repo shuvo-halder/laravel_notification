@@ -20,4 +20,19 @@ class UserController extends Controller
         $notification = Notification::send($user, new WelcomeNotification);
         return response()->json(['message' => 'Notification sent!']);
     }
+
+    public function postNotifications(){
+        $users = User::all();
+
+        $post = [
+            'title' => 'New Post',
+            'slug' => 'new-post',
+        ];
+        
+        foreach ($users as $user){
+            Notification::send($user, new WelcomeNotification($post));
+        }
+        
+        return response()->json(['message' => 'Notification sent!']);
+    }
 }
