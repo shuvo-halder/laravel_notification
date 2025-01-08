@@ -15,3 +15,4 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('user-notifications', [HomeController::class, 'userNotifications'])->name('user.notifications');

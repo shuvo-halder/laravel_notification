@@ -13,4 +13,10 @@ class UserController extends Controller
     {
         return view('welcome');
     }
+
+    public function userNotifications()
+    {
+        
+        return response()->json(['message' => 'Notification sent!']);
+    }
 }
