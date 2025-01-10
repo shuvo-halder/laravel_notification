@@ -5,6 +5,7 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
 
 class UserFollowSlackNotification extends Notification implements ShouldQueue
@@ -28,6 +29,11 @@ class UserFollowSlackNotification extends Notification implements ShouldQueue
     public function via(object $notifiable): array
     {
         return ['database', 'slack'];
+    }
+
+    public function toSlack(object $notifiable): array
+    {
+        return (new SlackMessage)->content($this->user['name'] . ' is now following you!');
     }
 
     
