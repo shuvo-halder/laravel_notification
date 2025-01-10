@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Notifications\WelcomeNotification;
 use App\Notifications\PostAlartNotification;
 use App\Notifications\UserFollowNotification;
+use App\Notifications\UserFollowSlackNotification;
 use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
@@ -51,6 +52,7 @@ class UserController extends Controller
         if(auth()->user()){
 
             auth()->user()->notify(new UserFollowNotification($user));
+            auth()->user()->notify(new UserFollowSlackNotification($user));
 
         }
 
