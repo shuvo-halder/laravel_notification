@@ -10,7 +10,7 @@
         "laravel/breeze": "^1.29",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
-        "laravel/slack-notification-channel": "*",
+        "laravel/slack-notification-channel": "^3.4",
         "laravel/tinker": "^2.8"
     },
     "require-dev": {
